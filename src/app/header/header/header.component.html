@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-newsBar">
+  <div class="container">
+    <div class="navbar-header">
+      <a routerLink="/" class="navbar-brand">ABBNews</a>
+    </div>
+
+    <button
+      class="navbar-toggler"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+      (click)="isCollapsed = !isCollapsed"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--Collapsible navbar, collapses on screen below small size-->
+    <div
+      [class.collapse]="isCollapsed"
+      id="navbarCollapse"
+      class="collpase navbar-collapse"
+    >
+      <ul class="navbar-nav ms-auto mb-2">
+        <li class="nav-item" routerLinkActive="active">
+          <a
+            class="nav-link"
+            routerLink="/news"
+            (click)="getNewsData()"
+            >News</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="" (click)="isCollapsed = !isCollapsed"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

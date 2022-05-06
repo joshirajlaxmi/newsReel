@@ -1,0 +1,14 @@
+.bg-newsBar {
+  background: teal;
+}
+
+.navbar .nav-link {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.navbar .nav-item.active {
+  border-left: #35b5ac 3px solid;
+}

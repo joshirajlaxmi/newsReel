@@ -1,0 +1,32 @@
+<header>
+  <h2 class="slider-title">News</h2>
+  <p class="text-secondary">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore repellendus
+    perspiciatis soluta! Fuga sunt, ex impedit amet quod consequatur. Recusandae
+    provident deleniti optio ducimus fugiat et natus maiores dolorum iste
+    aliquid animi, consequuntur iure nisi ipsam iusto sint earum eius.
+  </p>
+</header>
+<div class="row">
+  <div class="col-md-12 m-auto">
+    <div class="alert alert-danger" *ngIf="error && !isFetching">
+      <h1>An Error Occurred!</h1>
+      <p>{{ error }}</p>
+    </div>
+    <p *ngIf="isFetching && !error">Loading...</p>
+    <ngb-carousel *ngIf="newsArr?.length > 0 && !error && !isFetching">
+      <ng-template ngbSlide *ngFor="let newsEl of newsArr; let i = index">
+        <div class="picsum-img-wrapper">
+          <div class="dark-overlay">
+            <h3 class="slider-heading ms-3 mt-3">{{ newsEl.heading }}</h3>
+            <p class="p-3 text-light d-none d-md-block">
+              {{ newsEl.description }}
+            </p>
+            <button class="p-2 btn btn-primary">Read More</button>
+          </div>
+          <img [src]="images[0]" alt="Random first slide" />
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</div>
