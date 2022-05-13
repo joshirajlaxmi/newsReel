@@ -10,6 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer/footer.component';
 import { LoggingInterceptorService } from './shared/logging-interceptor.service';
+import { FormsModule } from '@angular/forms';
+import { LoadingSpinnerComponent } from './shared/loading-spinner.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,25 @@ import { LoggingInterceptorService } from './shared/logging-interceptor.service'
     HeaderComponent,
     AuthComponent,
     FooterComponent,
+    LoadingSpinnerComponent,
+    ContactUsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoggingInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
       multi: true,
     },
   ],
